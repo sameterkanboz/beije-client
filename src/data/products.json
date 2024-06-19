@@ -1,0 +1,70 @@
+{
+  "categories": [
+    {
+      "category_id": 1,
+      "category_name": "Ped Paketleri",
+      "products": [
+        {
+          "product_id": 1,
+          "product_name": "Standart Ped",
+          "price": 60.84,
+          "max": 60
+        },
+        {
+          "product_id": 2,
+          "product_name": "Süper Ped",
+          "price": 71.4,
+          "max": 60
+        },
+        {
+          "product_id": 3,
+          "product_name": "Süper+ Ped",
+          "price": 80.03,
+          "max": 60
+        }
+      ]
+    },
+    {
+      "category_id": 2,
+      "category_name": "Günlük Ped Paketleri",
+      "products": [
+        {
+          "product_id": 4,
+          "product_name": "Günlük Ped",
+          "price": 37.59,
+          "max": 100
+        },
+        {
+          "product_id": 5,
+          "product_name": "Süper Günlük Ped",
+          "price": 43.23,
+          "max": 100
+        }
+      ]
+    },
+    {
+      "category_id": 3,
+      "category_name": "Tampon Paketleri",
+      "products": [
+        {
+          "product_id": 6,
+          "product_name": "Mini Tampon",
+          "price": 78.74,
+          "max": 60
+        },
+        {
+          "product_id": 7,
+          "product_name": "Standart Tampon",
+          "price": 84.88,
+          "max": 60
+        },
+        {
+          "product_id": 8,
+          "product_name": "Süper Tampon",
+          "price": 89.74,
+          "max": 60
+        }
+      ]
+    }
+  ]
+}
