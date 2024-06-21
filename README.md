@@ -43,3 +43,4 @@ npm run dev
 ## Demo
 
 You can test the project if you want
+[LIVE DEMO](https://beije-client.vercel.app/)
