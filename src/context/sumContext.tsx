@@ -32,19 +32,21 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     quantity: number
   ) {
     if (!order) {
-      const newOrder: Order = {
-        id: "unique-order-id",
-        userId: "user-id",
-        categories: [
-          {
-            categoryId,
-            categoryName,
-            products: [{ product, quantity }],
-          },
-        ],
-        sum: product.price * quantity,
-      };
-      setOrder(newOrder);
+      if (quantity > 0) {
+        const newOrder: Order = {
+          id: "unique-order-id",
+          userId: "user-id",
+          categories: [
+            {
+              categoryId,
+              categoryName,
+              products: [{ product, quantity }],
+            },
+          ],
+          sum: product.price * quantity,
+        };
+        setOrder(newOrder);
+      }
     } else {
       const categoryIndex = order.categories.findIndex(
         (c) => c.categoryId === categoryId
@@ -60,25 +62,49 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         let updatedProducts;
 
         if (existingProductIndex > -1) {
-          updatedProducts = order.categories[categoryIndex].products.map(
-            (p, index) =>
-              index === existingProductIndex ? { ...p, quantity } : p
-          );
-        } else {
+          if (quantity > 0) {
+            updatedProducts = order.categories[categoryIndex].products.map(
+              (p, index) =>
+                index === existingProductIndex ? { ...p, quantity } : p
+            );
+          } else {
+            updatedProducts = order.categories[categoryIndex].products.filter(
+              (p, index) => index !== existingProductIndex
+            );
+          }
+        } else if (quantity > 0) {
           updatedProducts = [
             ...order.categories[categoryIndex].products,
             { product, quantity },
           ];
+        } else {
+          updatedProducts = [...order.categories[categoryIndex].products];
         }
 
-        updatedCategories = order.categories.map((c, index) =>
-          index === categoryIndex ? { ...c, products: updatedProducts } : c
-        );
-      } else {
+        // If the category is going to be empty, reset the quantities of all its products
+        if (updatedProducts.length === 0) {
+          updatedCategories = order.categories
+            .map((c, index) =>
+              index === categoryIndex
+                ? {
+                    ...c,
+                    products: c.products.map((p) => ({ ...p, quantity: 0 })),
+                  }
+                : c
+            )
+            .filter((c) => c.products.length > 0);
+        } else {
+          updatedCategories = order.categories.map((c, index) =>
+            index === categoryIndex ? { ...c, products: updatedProducts } : c
+          );
+        }
+      } else if (quantity > 0) {
         updatedCategories = [
           ...order.categories,
           { categoryId, categoryName, products: [{ product, quantity }] },
         ];
+      } else {
+        updatedCategories = [...order.categories];
       }
 
       const newSum = updatedCategories.reduce(
@@ -124,6 +150,10 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       sum: newSum,
     };
 
+    if (updatedCategories.length === 0) {
+      setOrder(null);
+      return;
+    }
     setOrder(updatedOrder);
   }
 

@@ -62,33 +62,34 @@ export default function CustomPacketTabs() {
       newQuantity / 10
     );
   };
+
   return (
     <Box sx={{ width: "100%" }}>
       <Box
         sx={{
-          borderBottom: 1,
-          borderColor: "divider",
           justifyContent: "center",
           display: "flex",
+          paddingBottom: "48px",
         }}
       >
         <Tabs
+          className="flex flex-col justify-center"
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
         >
           <Tab
-            sx={{ fontWeight: 700, textTransform: "none", width: "172px" }}
+            sx={{ fontWeight: 700, textTransform: "none" }}
             label="beije Ped"
             {...a11yProps(0)}
           />
           <Tab
-            sx={{ fontWeight: 700, textTransform: "none", width: "172px" }}
+            sx={{ fontWeight: 700, textTransform: "none" }}
             label="beije Günlük Ped"
             {...a11yProps(1)}
           />
           <Tab
-            sx={{ fontWeight: 700, textTransform: "none", width: "172px" }}
+            sx={{ fontWeight: 700, textTransform: "none" }}
             label="beije Tampon"
             {...a11yProps(2)}
           />
@@ -115,84 +116,6 @@ export default function CustomPacketTabs() {
           ))}
         </CustomTabPanel>
       ))}
-      {/* <CustomTabPanel value={value} index={0}>
-        <ProductSlider
-          onChange={(value: number) => {
-            console.log(value);
-          }}
-          value={0}
-          header="Standart Ped"
-          max={60}
-          min={0}
-        />
-        <ProductSlider
-          onChange={(value: number) => {
-            console.log(value);
-          }}
-          value={0}
-          header="Süper Ped"
-          max={100}
-          min={0}
-        />
-        <ProductSlider
-          onChange={(value: number) => {
-            console.log(value);
-          }}
-          value={0}
-          header="Süper+ Ped"
-          max={100}
-          min={0}
-        />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        <ProductSlider
-          onChange={(value: number) => {
-            console.log(value);
-          }}
-          value={0}
-          header="Günlük Ped"
-          max={100}
-          min={0}
-        />
-        <ProductSlider
-          onChange={(value: number) => {
-            console.log(value);
-          }}
-          value={0}
-          header="Süper Günlük Ped"
-          max={100}
-          min={0}
-        />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        <ProductSlider
-          onChange={(value: number) => {
-            console.log(value);
-          }}
-          value={0}
-          header="Mini Tampon"
-          max={60}
-          min={0}
-        />
-        <ProductSlider
-          onChange={(value: number) => {
-            console.log(value);
-          }}
-          value={0}
-          header="Standart Tampon"
-          max={60}
-          min={0}
-        />
-        <ProductSlider
-          onChange={(value: number) => {
-            console.log(value);
-          }}
-          value={0}
-          header="Süper Tampon"
-          max={60}
-          min={0}
-        />
-      </CustomTabPanel> */}
     </Box>
   );
 }

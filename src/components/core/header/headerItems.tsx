@@ -45,6 +45,7 @@ const HeaderItems = () => {
 
         return (
           <HeaderItem
+            href={category.value}
             category={category}
             close={close}
             handleOpen={handleOpen}

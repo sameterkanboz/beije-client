@@ -4,7 +4,7 @@ interface ProductSliderProps {
   header: string;
   max: number;
   min: number;
-  value?: number;
+  value: number;
   onChange: any;
 }
 
@@ -19,7 +19,7 @@ const ProductSlider = (props: ProductSliderProps) => {
         <Slider
           aria-label="Always visible"
           defaultValue={value}
-          valueLabelDisplay="on"
+          valueLabelDisplay={value === min || value === max ? "auto" : "on"}
           onChange={onChange}
           value={value}
           shiftStep={10}

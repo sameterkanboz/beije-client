@@ -23,7 +23,9 @@ export default function RootLayout({
           <AppRouterCacheProvider>
             <CartProvider>
               <Header />
-              <main className="flex  flex-col py-24 px-12">{children}</main>
+              <main className="flex  flex-col px-2  py-24 md:px-12">
+                {children}
+              </main>
 
               <Footer />
             </CartProvider>

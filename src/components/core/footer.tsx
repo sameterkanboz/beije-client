@@ -2,7 +2,16 @@ import { Button, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import BeijeLogo from "../icons/beijeLogo";
 import { Icons } from "../icons/coreIcons";
-
+const footerItems = [
+  "beije Ped",
+  "beije Günlük Ped",
+  "beije Tampon",
+  "beije Store",
+  "Blog",
+  "Sıkça Sorulan Sorular",
+  "Biz Kimiz",
+  "Quiz",
+];
 const Footer = () => {
   return (
     <footer
@@ -10,7 +19,7 @@ const Footer = () => {
       aria-labelledby="footer-heading"
     >
       <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8">
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-col lg:flex-row gap-4">
           <div className="flex flex-col gap-4">
             <BeijeLogo />
             <Typography
@@ -27,7 +36,6 @@ const Footer = () => {
             </Typography>
             <Typography
               sx={{
-                textAlign: "left",
                 fontWeight: 400,
                 fontSize: "0.875rem",
                 lineHeight: "1.375rem",
@@ -37,7 +45,7 @@ const Footer = () => {
               beije’deki yeni ürün ve gelişmeleri sana haber verelim &amp; aylık
               e-gazetemiz döngü’ye abone ol!
             </Typography>
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-col lg:flex-row gap-4">
               <TextField
                 size="small"
                 id="outlined-basic"
@@ -56,7 +64,6 @@ const Footer = () => {
                 sx={{
                   backgroundColor: "transparent",
                   borderRadius: "32px",
-                  width: "90%",
 
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
@@ -104,35 +111,44 @@ const Footer = () => {
               beije'den haber almayı onaylıyorum.
             </Typography>
           </div>
-          <div className="grid grid-cols-2 gap-8">
-            {[
-              "beije Ped",
-              "beije Günlük Ped",
-              "beije Tampon",
-              "beije Store",
-              "Blog",
-              "Sıkça Sorulan Sorular",
-              "Biz Kimiz",
-              "Quiz",
-            ].map((item) => (
-              <Link
-                className="text-base font-normal text-[#BDBDBD]"
-                href={item}
-                key={item}
-              >
-                <Typography variant="h6">{item}</Typography>
-              </Link>
-            ))}
+          <div className="flex flex-row justify-center xs:w-full lg:w-auto">
+            <div className="flex flex-col w-1/2 justify-between">
+              {footerItems.slice(0, 4).map((item) => (
+                <Link
+                  className="text-center font-thin text-sm text-[#BDBDBD] "
+                  href={item}
+                  key={item}
+                >
+                  <span className="hover:text-[#E3E3E3] transition-colors duration-300 ease-in-out">
+                    {item}
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col w-1/2 justify-between">
+              {footerItems.slice(4).map((item) => (
+                <Link
+                  className="text-center font-thin text-sm text-[#BDBDBD] "
+                  href={item}
+                  key={item}
+                >
+                  <span className="hover:text-[#E3E3E3] transition-colors duration-300 ease-in-out">
+                    {item}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-col gap-4">
+
+          <div className="flex flex-row xs:w-full md:w-auto justify-between items-start lg:flex-col gap-4">
             {[
               {
                 title: "facebook",
-                icon: <Icons.gitHub size={8} />,
+                icon: <Icons.facebook />,
               },
               {
                 title: "instagram",
-                icon: <Icons.media />,
+                icon: <Icons.instagram />,
               },
               {
                 title: "twitter",
@@ -140,7 +156,11 @@ const Footer = () => {
               },
               {
                 title: "linkedin",
-                icon: <Icons.laptop />,
+                icon: <Icons.linkedin />,
+              },
+              {
+                title: "spotify",
+                icon: <Icons.spotify />,
               },
             ].map((item) => (
               <Link
@@ -148,22 +168,25 @@ const Footer = () => {
                 href={item.title}
                 key={item.title}
               >
-                <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-row justify-center gap-3 items-center">
                   {item.icon}
-                  <Typography
-                    sx={{
-                      fontSize: "0.875rem",
-                    }}
-                  >
-                    {item.title}
-                  </Typography>
+
+                  <span className="hidden lg:block">
+                    <Typography
+                      sx={{
+                        fontSize: "0.875rem",
+                      }}
+                    >
+                      {item.title}
+                    </Typography>{" "}
+                  </span>
                 </div>
               </Link>
             ))}
           </div>
         </div>
 
-        <div className="pt-8 mt-8 text-[#929292] border-[#929292] border-t-2 md:flex md:items-center md:justify-between">
+        <div className="pt-8 mt-8 text-[#929292] border-[#929292] border-t-2 flex flex-col gap-4 lg:flex-row justify-center items-center ">
           <div className="flex space-x-6 md:order-2">KVKK</div>
           <div className="flex space-x-6 md:order-2">KVKK Başvuru Formu</div>
           <div className="flex space-x-6 md:order-2">Üyelik Sözleşmesi</div>
